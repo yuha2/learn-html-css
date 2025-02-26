@@ -1,0 +1,45 @@
+@import '/src/common/theme.css';
+
+/* float : 일반흐름을 벗어나는 개체, 떠있음 */
+
+/* css의 display 속성으로 특정 영역 보이지 않도록 설정 */
+.mom-friend-son {
+  display: none;
+}
+
+/* float 사용하기 */
+.card {
+  background: var(--pastel-pink);
+  border: 1px solid green;
+
+  .thumbnail {
+    background: var(--pastel-yellow);
+    /* float으로 인해 부모 요소인 thumbnail이 인식하지 못하는 높이를 포함하도록 BFC를 생성
+    플롯 문제를 해결할려고 감춰두는걸 설정했는데 다른걸 추가하려고 보니까 이상해질 수 있음*/
+    /* overflow: hidden; */
+    /* width: 100%;
+    float: left; */
+    display: flow-root;
+    border: 1px solid red;
+
+    img {
+      width: 100px;
+      float: left;
+      vertical-align: middle; /* inline 일때만 vertical-align 사용 가능, 정렬 기능 */
+
+      /* vertical-align: top; 이미지 아래쪽 여백을 없애기 위한 트릭  */
+      /* display: block 이미지 아래쪽 여백을 없애기 위한 트릭; */
+    }
+  }
+
+  .subject {
+    background: var(--pastel-blue);
+  }
+
+  .content {
+    /* float 효과를 해제하기 위해 clear 속성을 사용할 수 있다. clear: left; clear: right; */
+    /* claer 속성은 반드시 block 성향을 가지는 요소에만 적용할 수 있음 */
+    clear: both;
+    background: var(--pastel-orange);
+  }
+}
