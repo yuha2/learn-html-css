@@ -1,0 +1,77 @@
+/* 스타일 초기화 */
+body *,
+body *::before,
+body *::after {
+  box-sizing: border-box; /* a와 버튼과 기본 박스 사이징이 다르기 때문에  */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+li {
+  list-style: none;
+  padding-left: 0;
+}
+
+body {
+  font-family: 'SUIT', sans-serif;
+}
+
+/* 멤버 서비스 */
+.member-service {
+  background: yellow;
+  display: flow-root; /* float을 사용했을 때 부모 요소가 자식 요소를 감싸지 못하는 경우
+                         부모 요소가 float된 자식 요소들을 감싸서 높이를 올바르게 계산
+                         레이아웃이 깨지는 문제를 해결 */
+
+  a {
+    /* background: lime; */
+    float: left;
+    text-transform: uppercase; /* 대문자로 변환 */
+  }
+
+  a:nth-child(n + 2)::before {
+    content: '|';
+    margin: 0 0.5em;
+  }
+
+  &::after {
+    /* before, afterm 는 content가 반드시 필요 */
+    display: block;
+    content: '';
+    clear: both;
+  }
+}
+
+hr {
+  clear: both;
+}
+
+/* 멤버 링크 */
+.member-link {
+  margin-top: 100px;
+  clear: both; /* .member-link 위에 있는 float된 요소들로 인해 위치가 밀리는 것을 방지
+  display: flow-root;와 함께 사용하여 float 해제 효과를 강화 */
+  border: 1px solid red;
+  display: flow-root;
+
+  li {
+    background: skyblue;
+    float: left;
+
+    span {
+      background: pink;
+      float: left;
+      margin: 0 0.5em;
+    }
+
+    a {
+      background: orange;
+      float: left;
+      text-transform: uppercase;
+    }
+  }
+}
