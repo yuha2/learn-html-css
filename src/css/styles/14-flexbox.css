@@ -22,11 +22,13 @@ body *::after {
   /* flex-direction: row; - float로 배치한것처럼 나란히 공백없이 배치됨 - 안줘도 기본으로 됨
   flex-wrap: nowrap; - 넘쳤을 때 줄바꿈 금지(기본속성), 줄바꿈으로 하고 싶다면 wrap으로 주기*/
   /* flex-direction 속성과 flex-wrap 속성을 단축해서 지정할 때 */
-  flex-flow: row wrap;
+  flex-flow: row wrap; /* 습관적으로 명시해주면 좋음 */
   border: 1px solid red;
   /* padding: 10px; */
   inline-size: 622px;
   block-size: 522px;
+  /* justify-content - 주축을 정렬하는 것 (direction이 row 라면 x축이 메인, colum 이라면 y축이 메인) 
+  , align-items - 반대 (stretch가 기본)*/
   justify-content: center;
   align-items: center;
   align-content: center; /* 가운데 정렬 */
@@ -59,27 +61,33 @@ body *::after {
 /* 플렉스 아이템 관련 속성 */
 .case-02 {
   border: 1px solid green;
-  width: 502px;
+  width: 502px; /* border까지 포함해야 함 */
   inline-size: 502px;
   display: flex;
   flex-flow: row nowrap;
 
-  [class^='item'] {
-    border: 1px solid currentColor;
+  [class^='item'] /* 클래스가 item으로 시작하는 것 */ {
+    border: 1px solid currentColor; /* currentColor - 글자색과 같은 컬러 */
     /* width: 100px;
-    inline-size: 100px;
-    height: 100px;
+    inline-size: 100px; / width를 기본값으로 두고, inline-size를 함께 사용하면 최대한의 유연성을 확보 가능
+    height: 100px; 
     block-size: 100px; */
-    text-align: center;
-    align-content: center;
-    /* flex-basis: 200px;
-    flex-shrink: 1;
-    flex-grow: 0; */
-    /* flex-grow, flex-shrink, flex-basis 속성으 단축 표기 */
+    text-align: center; /* 상자 안에서 글자가 가로로 가운데 정렬 */
+    align-content: center; /* 상자 안에서 글자가 세로로 가운데 정렬 */
+    /* flex-basis: 200px; 아이템의 초기 크기 지정 (auto가 기본 값), width랑 다르게 메인축에 따라 방향이 다름
+                          auto가 아닌 값을 줬을 때는 width, height 보다 우선 적용됨.
+                          content 로 주면, content 크기에 맞춰짐 
+    flex-shrink: 1; 기본적인 수축 비율을 설정 (1이 기본 값)
+                    (부모 요소가 800일떄 자식 요소 5개가 각자 200 이면 사이즈가 200이 아닌 비율대로 수축 적용됨)
+    flex-grow: 0; 비율로 적용됨 (0이 기본 값)
+                  flex-basis가 content인 상태에서 grow를 1로 주면 여백만 똑같아짐
+                  flex-basis가 0인 상태에서 grow를 1로 주면 글자 길이 상관없이 균등하게 사이즈가 조절됨 */
+    /* flex-grow, flex-shrink, flex-basis 속성으로 단축 표기 */
     flex: 0 1 150px;
 
-    &:nth-child(even) {
-      order: -1;
+    &:nth-child(even) /* 부모 요소의 자식들 중 짝수 번째(even) 요소를 선택하는 CSS 선택자 (odd:홀수) */ {
+      order: -1; /* 모든 기본 오더는 0번, -1로 주게 되면 해당 요소가 맨 앞으로 오게 됨
+      맨 뒤에 오게 하고 싶다면 99, 9999 등으로 사용*/
       /* flex-grow: 2; */
     }
   }
