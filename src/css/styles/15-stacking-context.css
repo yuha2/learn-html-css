@@ -1,0 +1,76 @@
+@import '/src/common/best-reset.css';
+@import '/src/common/theme.css';
+@import '/src/ui/components/avatar/avatar.css';
+@import '/src/common/base.css';
+
+body {
+  margin: 50px;
+}
+
+h1 {
+  margin-block: 20px; /* BFC로 만든게 아니라 노멀 플로우 상태이기 때문에 위 마진과 겹친다 */
+}
+
+/* Stacking context */
+/* case 1 */
+.case-01 {
+  background: yellow;
+  display: flex;
+  flex-flow: row nowrap;
+
+  .button-avatar {
+    margin-right: -20px; /* 음수를 쓰면 겹쳐진다 */
+    position: static;
+    transition: rotate 2000ms;
+    /* filter: blur(5px); */
+
+    &:hover, /* 버튼에 마우스를 올렸을 때 */
+    &:focus /* 버튼을 눌렀을 때 */ {
+      /* 아바타의 겹치는 순서를 제어하기 위해 0보다 큰 값 지정 */
+      /* position이 static이 아닐 경우 가능 (z-index) */
+      z-index: 10; /* 버튼에 마우스를 올리면 이미지가 맨 앞으로 나옴 */
+      transform: scale(1.5) translate(0, -20px); /* 이미지가 커지고, 위치 변경 */
+      /* opacity: 0.8; */
+      /* translate:0 -20px; */
+      rotate: -3turn;
+      /* filter: blur(5px) - 블러 / filter: grayscale(100%) - 흑백 / filter: sepia(60%) - 노란필터 */
+      filter: sepia(60%);
+    }
+
+    &::after {
+      display: none;
+    }
+  }
+}
+
+/* Transition */
+/* case 2 */
+.case-02 {
+  margin-block-start: 20px;
+  display: flex;
+  gap: 20px;
+
+  [class^='area'] {
+    inline-size: 100px;
+    block-size: 100px;
+    border: 1px solid currentColor;
+    text-align: center;
+    align-content: center;
+    background: var(--pastel-lavender);
+    /* transition-property: background, border-radius;
+    transition-duration: 2s, 1s;
+    transition-delay: 0s, 2s;
+    transition-timing-function: ease; */
+    /* transition 관련 단축 속성 */
+    /* transition: 
+              background 2s 0s ease, 
+              border-raius 1s 2s ease; */
+    transition: all 200ms;
+
+    &:hover {
+      background: var(--pastel-orange);
+      border-radius: 50%;
+      rotate: 2turn;
+    }
+  }
+}
