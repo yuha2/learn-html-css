@@ -13,14 +13,14 @@
 .table-styling {
   border: 1px solid currentColor;
   inline-size: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
+  border-collapse: separate; /* border-collapse: collapse; 선 병합 */
+  border-spacing: 0; /* 선 사이에 공백 없애기 */
   /* position: relative; */
 
   caption {
     font-size: 2rem;
     line-height: 1.5;
-    position: fixed;
+    position: fixed; /* 뷰포트 기준 떠있음(고정) */
     top: 20px;
     right: 20px;
   }
@@ -52,7 +52,7 @@
   }
 
   thead {
-    position: sticky;
+    position: sticky; /* 부모 컨테이너 기준으로 고정 */
     top: 0;
   }
 
