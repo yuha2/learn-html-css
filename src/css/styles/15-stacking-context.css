@@ -21,7 +21,7 @@ h1 {
   .button-avatar {
     margin-right: -20px; /* 음수를 쓰면 겹쳐진다 */
     position: static;
-    transition: rotate 2000ms;
+    transition: rotate 2000ms; /* 돌아가는 과정을 보고 싶다면 호버나 포커스가 아닌 버튼에 주어야한다 */
     /* filter: blur(5px); */
 
     &:hover, /* 버튼에 마우스를 올렸을 때 */
@@ -48,9 +48,9 @@ h1 {
 .case-02 {
   margin-block-start: 20px;
   display: flex;
-  gap: 20px;
+  gap: 20px; /* 상자 사이 공간주기 */
 
-  [class^='area'] {
+  [class^='area'] /* 클래스가 area 로 시작하는 것 */ {
     inline-size: 100px;
     block-size: 100px;
     border: 1px solid currentColor;
@@ -59,8 +59,8 @@ h1 {
     background: var(--pastel-lavender);
     /* transition-property: background, border-radius;
     transition-duration: 2s, 1s;
-    transition-delay: 0s, 2s;
-    transition-timing-function: ease; */
+    transition-delay: 0s, 2s; - 배경이 먼저 변화하고 2초뒤에 라운드
+    transition-timing-function: ease;  - 가속과 감속을 조정 (ease가 기본 값)*/
     /* transition 관련 단축 속성 */
     /* transition: 
               background 2s 0s ease, 
