@@ -19,20 +19,21 @@ body {
 
   /* case : column-width */
   .case-01 {
-    column-width: 15rem;
-    column-rule: 1px solid red;
-    column-gap: 2rem;
+    column-width: 15rem; /* 15rem 크기만큼 단이 나뉘어짐 늘리면 단 갯수가 늘어남 */
+    column-rule: 1px solid red; /* 단과 단 사이 구분 선 */
+    column-gap: 2rem; /* 열과 열 사이의 거리를 조정 */
   }
 
   /* case : column-count */
   /* column-rule 속성으로 단 구분선 스타일링 */
   .case-02 {
-    column-count: 4;
+    column-count: 4; /* 단을 4개로 나눔 늘려도 단이 늘어나지 않음 */
     column-rule: 1px dotted green;
 
-    /* column-span: all을 지정하기 위해서는 블록 요소여야만 합니다. */
     span {
       display: block;
+      /* column-span: all을 지정하기 위해서는 블록 요소여야 함.
+      여러 열(column)을 가로질러 배치되도록 설정 */
       column-span: all;
       background: var(--pastel-dark-blue);
       color: var(--white);
@@ -48,13 +49,13 @@ body {
 
   /* case : columns 단축속성에 column-count 선언 */
   .case-04 {
-    /* column-fill: balance; */
+    /* column-fill: balance; 레이아웃에서 컬럼 내부의 콘텐츠를 균등하게 채움 */
     columns: 2;
   }
 
   /* case : column-fill: auto */
   .case-05 {
-    column-fill: auto;
+    column-fill: auto; /* 레이아웃에서 컬럼 내부의 콘텐츠를 자동으로 채움 */
     columns: 2;
     height: 100px;
     block-size: 100px;
