@@ -4,18 +4,18 @@
 @import '/src/common/base.css';
 
 /* 가상 요소 선택자를 활용한 텍스트 스위치 컴포넌트 */
-.text-switch{
-  --switch-active-color: var(--green-500, #03CF5D);
+.text-switch {
+  --switch-active-color: var(--green-500, #03cf5d);
   --switch-inactive-color: var(--gray-600, #999);
   --size: 2em;
-  
+
   position: relative;
   display: inline-flex;
-  justify-content: end;
+  justify-content: end; /* 오른쪽 정렬 */
   width: var(--size);
   inline-size: var(--size);
 
-  input{
+  input {
     position: absolute;
     top: 0;
     inset-block-start: 0;
@@ -27,17 +27,17 @@
     appearance: none;
   }
 
-  label{
+  label {
     display: contents;
-    
-    &::after{
+
+    &::after {
       content: 'OFF';
       font-size: var(--font-md);
       color: var(--switch-inactive-color);
     }
   }
 
-  input:checked + label::after{
+  input:checked + label::after {
     content: 'ON';
     color: var(--switch-active-color);
   }
@@ -47,25 +47,26 @@
 .toggle-switch {
   --size: 3rem;
 
-  display:inline-flex;
+  display: inline-flex;
   width: var(--size);
   inline-size: var(--size);
-  aspect-ratio: 2/1;
-  border:1px solid var(--gray-700);
+  aspect-ratio: 2/1; /* 가로(width)와 세로(height) 비율을 지정 */
+  border: 1px solid var(--gray-700);
+  /* 변수를 이용해서 항상 크기의 절반이 될 수 있게끔 */
   border-radius: calc(var(--size) / 2);
-  background:var(--gray-400);
-  position:relative;
+  background: var(--gray-400);
+  position: relative;
   transition: background 0.3s;
 
-  &:has(:checked){
+  &:has(:checked) {
     background: var(--green-500);
   }
 
-  &:has(:focus-visible){
+  &:has(:focus-visible) {
     box-shadow: 0 0 0 1px var(--blue-900);
   }
-  
-   /* input{
+
+  /* input{
     margin: 0;
     appearance: none;
     position:absolute;
@@ -74,25 +75,26 @@
     left:0px;
     inset-inline-start: 0px;
     transition: translate 0.3s;
-    width: calc(50% - 1px);
+    (상자의 크기를 부모의 높이를 기준으로 가운데 배치하기 위해 width 와 aspect-ratio를 같이 줌)
+    width: calc(50% - 1px); (보더 두께를 빼기 위해 -1px을 주어야 한다)
     inline-size: calc(50% - 1px);
     aspect-ratio: 1 / 1;
     background: var(--white);
     border-radius: 50%;
 
     &:checked{
-      translate: calc(100% + 2px) 0;
+      translate: calc(100% + 2px) 0; - x축으로 자기자신의 크기만큼 +2px 움직이게
     }
   } */
-  
-   /* label{
+
+  /* label{
     width: 100%;
     inline-size: 100%;
     height: 100%;
     block-size: 100%;
   } */
 
-  input{
+  input {
     margin: 0;
     width: 100%;
     height: 100%;
@@ -101,8 +103,8 @@
     left: 0;
     appearance: none;
   }
-  
-  label{
+
+  label {
     width: calc(50% - 1px);
     aspect-ratio: 1/1;
     position: absolute;
@@ -113,7 +115,7 @@
     transition: translate 0.3s;
   }
 
-  input:checked + label{
+  input:checked + label {
     translate: calc(100% + 2px) 0;
   }
 }

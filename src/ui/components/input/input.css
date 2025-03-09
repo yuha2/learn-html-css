@@ -4,7 +4,7 @@
 @import '/src/common/base.css';
 
 /* 입력 서식 컴포넌트 */
-.input{
+.input {
   --text-color: var(--gray-600);
   --fill-color: var(--white);
   --outline-color: var(--gray-900);
@@ -20,12 +20,12 @@
   column-gap: var(--spacing);
 
   /* .input__label */
-  label{
+  label {
     color: var(--text-color);
   }
 
   /* .input__input */
-  input{
+  input {
     color: var(--text-color);
     background: var(--fill-color);
     border: 1px solid var(--outline-color);
@@ -34,7 +34,7 @@
     flex: 1 1 0;
 
     /* 읽기 전용 */
-    &:read-only{
+    &:read-only {
       --text-color: var(--blue-300);
 
       cursor: default;
@@ -42,16 +42,16 @@
     }
 
     /* 비활성화 */
-    &:disabled{
+    &:disabled {
       --fill-color: var(--gray-200);
-      
+
       cursor: not-allowed;
       opacity: 0.7;
     }
   }
 
   /* .input__error-message */
-  p{
+  p {
     --text-color: var(--red-500);
     --text-size: var(--font-xs);
 
@@ -65,11 +65,12 @@
     inset-block-end: 0;
     translate: 0 0.75rem;
   }
-
+  /* invalid : 설정된 값이 아니면 다 반응 */
+  /* user-invalid :폼을 처음 로드했을 때는 스타일이 적용되지 않으며, 사용자가 값을 입력한 후 잘못된 경우에만 반응 */
   input:user-invalid + p {
     display: block;
   }
-  
+  /* 사용자가 입력을 시작하면 스타일이 사라지고, 입력란이 비어 있어 placeholder가 보이면 스타일이 적용 */
   input:placeholder-shown + p {
     display: none;
   }
