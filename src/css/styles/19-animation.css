@@ -1,0 +1,281 @@
+@import '/src/common/modern-reset.css';
+@import '/src/common/theme.css';
+@import '/src/common/a11y.css';
+@import '/src/common/base.css';
+@import '/src/ui/components/button/button.css';
+
+:root {
+  color-scheme: light dark;
+}
+
+body {
+  margin: 20px;
+  background: light-dark(#fff, #000);
+  color: light-dark(#000, #fff);
+}
+
+.container {
+  display: grid;
+  /* 반응형 열(column) 크기를 자동으로 조정하는 설정입니다.
+     즉, 최소 17.5rem(약 280px)의 크기를 유지하면서, 가능한 많은 열을 추가 */
+  grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
+  /* 자동으로 생성되는 행(row)의 높이를 지정 */
+  grid-auto-rows: 18.75rem;
+  gap: 1.25rem;
+}
+
+.case {
+  border: 1px solid light-dark(#000, #fff);
+  padding: 2.5rem;
+
+  button {
+    border-radius: 0.5rem;
+    padding: 0.5em 1em;
+  }
+
+  .toggle-animation {
+    background-color: #4263eb;
+  }
+
+  .toggle-animation.paused {
+    background-color: #e03131;
+  }
+
+  .reset-animation {
+    background-color: #15aabf;
+  }
+
+  .target-animation {
+    margin-top: 2.5rem;
+    margin-block-start: 2.5rem;
+    font-size: 2rem;
+    text-align: center;
+    align-content: center;
+    padding: 0.625rem;
+    border-radius: 0.5rem;
+    background: linear-gradient(135deg, #37b24d, #2b8a3e);
+  }
+}
+
+/* Fade Animation */
+/* 에니메이션의 단계와 스타일을 정의 
+from (시작 상태), to (끝 상태)
+0% (시작 상태), 50% (중간 상태), 100% (끝 상태) */
+@keyframes fade {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+.case-01 .target-animation {
+  animation-name: fade; /* 애니메이션 이름 */
+  animation-duration: 4s; /* 애니메이션 작동 시간 */
+  animation-iteration-count: infinite; /* 재생 횟수 (무한 반복 설정) */
+  animation-delay: 1s; /* 에니메이션 시작 시간 지연 */
+  animation-timing-function: linear; /* 똑같은 감속과 감속을 가짐 */
+  animation-fill-mode: forwards; /* 에니메이션 종료 후 마지막 상태를 유지
+  none : 에니메이션이 시작되기 전과 종료 후에 스타일이 적용되지 않음(기본 값)
+  backwards : 에니메이션 시작 천에 첫 상태를 적용
+  both : forwards 와 backwards를 모두 적용 */
+  /* animation-direction: alternate; 방향(기본은 노멀) */
+
+  /* 단축 표기법 
+  animation: (이름) (지속시간) (타이밍 함수) (지연 시간) (반복 횟수) (방향) (채움 모드) (재생 상태);*/
+  animation: fade 3s infinite 1s linear both;
+  /* 에니메이션의 재생 상태 제어 (running이 기본 값) paused : 재생해야 돌아감 */
+  animation-play-state: paused;
+}
+
+/* Shrink Animation */
+@keyframes shrink {
+  0%,
+  100% {
+    width: 100%;
+  }
+  50% {
+    width: 50%;
+  }
+}
+.case-02 .target-animation {
+  animation: shrink 2s infinite ease-in-out both;
+  animation-play-state: paused;
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -20px;
+  }
+}
+.case-03 .target-animation {
+  animation: bounce 2s infinite ease-in-out;
+  animation-play-state: paused;
+}
+
+/* Shake Animation */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-15px);
+  }
+}
+.case-04 .target-animation {
+  animation: shake 1.5s infinite ease-in-out;
+  animation-play-state: paused;
+}
+
+/* Spin Animation */
+@keyframes spin {
+  0% {
+    rotate: 0turn; /* 각도를 주어도 됨 */
+  }
+  100% {
+    rotate: 1turn;
+  }
+}
+.case-05 .target-animation {
+  animation: spin 1.5s infinite linear;
+  animation-play-state: paused;
+  width: 9.375rem;
+  inline-size: 9.375rem;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  /* linear-gradient : 선형 그라디언트
+  conic-gradient : 원뿔형 그라디언트(방사형) */
+  background: conic-gradient(red, green, red);
+}
+
+/* Pulse Ainimation */
+@keyframes pulse {
+  0%,
+  100% {
+    scale: 1 1;
+  }
+  50% {
+    scale: 1.1 1.1;
+  }
+}
+.case-06 .target-animation {
+  animation: pulse 1.5s infinite ease-in-out;
+  animation-play-state: paused;
+}
+
+/* Flip Animation */
+@keyframes flip {
+  0% {
+    transform: perspective(400px) rotateY(0); /* perspective 원근감(px은 거리 - 작을수록 가까이) */
+  }
+  100% {
+    transform: perspective(400px) rotateY(360deg);
+  }
+}
+.case-07 .target-animation {
+  animation: flip 2s infinite ease-in-out;
+  animation-play-state: paused;
+}
+
+/* Wobble Animation */
+@keyframes wobble {
+  0%,
+  100% {
+    transform: translateX(0%) rotate(0deg);
+  }
+  15% {
+    transform: translateX(-15px) rotate(-5deg);
+  }
+  30% {
+    transform: translateX(10px) rotate(3deg);
+  }
+  45% {
+    transform: translateX(-10px) rotate(-3deg);
+  }
+  60% {
+    transform: translateX(5px) rotate(2deg);
+  }
+  75% {
+    transform: translateX(-5px) rotate(-1deg);
+  }
+}
+.case-08 .target-animation {
+  animation: wobble 2s infinite ease-in-out;
+  animation-play-state: paused;
+}
+
+/* Glow Animation */
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px light-dark(rgb(0 0 0 /0.5), rgb(255 255 255 /0.5));
+  }
+  50% {
+    box-shadow: 0 0 10px light-dark(rgb(0 0 0 /0.6), rgb(255 255 255 /0.6));
+  }
+}
+.case-09 .target-animation {
+  animation: glow 2s infinite ease-in-out;
+  animation-play-state: paused;
+}
+
+/* rotate Animation */
+@property --rotation {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes rotate {
+  from {
+    --rotation: 0deg;
+  }
+  to {
+    --rotation: 360deg;
+  }
+}
+.case-10 .target-animation {
+  width: 150px;
+  aspect-ratio: 1/1;
+  position: relative;
+
+  &::before,
+  &::after {
+    --rotation: 0deg;
+
+    box-sizing: content-box;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    inset: 50%;
+    translate: -50% -50%;
+    background: conic-gradient(
+      from var(--rotation),
+      red,
+      orange,
+      yellow,
+      green,
+      blue,
+      darkblue,
+      purple,
+      red
+    );
+    padding: 1px;
+    z-index: -1;
+    border-radius: 8px;
+    animation: rotate 1s infinite linear;
+    animation-play-state: paused;
+  }
+
+  &::before {
+    filter: blur(15px);
+  }
+}
