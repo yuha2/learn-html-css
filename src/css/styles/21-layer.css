@@ -1,0 +1,37 @@
+/* module 보다  state가 우선 순위가 높음 */
+/* 일반 선택자 > 네임드 없는 선택자 > 네임드 선택자(@layer module, state;) 후에 지정한 선택자 순으로 높음 
+단, 각각 !important를 주게 되면 반대로 됨 */
+@layer module, state;
+
+@layer state {
+  p.alert {
+    background-color: purple !important;
+  }
+  p {
+    border: medium solid limegreen;
+    padding: 2em;
+  }
+}
+
+@layer module {
+  .alert {
+    border: medium solid violet;
+    color: white;
+  }
+  p {
+    padding: 1em;
+  }
+  p.alert {
+    background: red !important;
+  }
+}
+
+@layer {
+  p.alert {
+    background: blue !important;
+  }
+}
+
+p.alert {
+  background: gray !important;
+}
