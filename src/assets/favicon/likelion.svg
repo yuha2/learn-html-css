@@ -7,6 +7,10 @@
         fill: #fff;
       }
     }
+<!-- 스타일에서 fill: #000; 로 줄때는 g 태그에서 fill="none"
+스타일에서 color: #000; 로 줄때는 g 태그에서 fill="currentColor"
+스타일 태그를 주지 않고 직접 주고 싶다면 g 태그에서 fill="#000"-->
+
   </style>
   <rect width="100%" height="100%" fill="#F3792D" />
   <g transform="translate(0.000000,64.000000) scale(0.100000,-0.100000)"
