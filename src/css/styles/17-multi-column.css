@@ -68,6 +68,8 @@ body {
   columns: 3;
 
   .case-02 {
+    /* 페이지, 열(column), 또는 
+    섹션이 시작되기 전에 강제 개행(줄 바꿈)을 적용하는 CSS 속성 */
     break-before: column;
     border: 1px solid red;
   }
