@@ -1,0 +1,31 @@
+@import '/src/common/modern-reset.css';
+@import '/src/common/theme.css';
+@import '/src/common/a11y.css';
+@import '/src/common/base.css';
+
+/* 기본 문법 */
+/* @media (prefers-color-scheme: light) {} 밝은 모드 스타일*/
+
+:root {
+  color-scheme: light dark; /* color-scheme : 테마를 쓸 것이라는 선언 */
+}
+body {
+  --light-color: var(--pastel-dark-blue);
+  --dark-color: var(--pastel-green);
+
+  background: var(--pastel-coral);
+  color: #000;
+  margin: 50px;
+
+  /* 다크 모드에서 @media 안의 스타일이 적용 */
+  @media (prefers-color-scheme: dark) {
+    background: var(--pastel-dark-blue);
+    color: #fff;
+  }
+}
+
+h1 {
+  /* 지역번수를 바디에 만들어서 가져오면 유지보수에 용이 
+  light, dark 둘 중 하나를 감지해서 적용하는 것 */
+  color: light-dark(var(--light-color), var(--dark-color));
+}
