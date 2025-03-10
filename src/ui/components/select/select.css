@@ -3,37 +3,43 @@
 @import '/src/common/a11y.css';
 @import '/src/common/base.css';
 
-body{
+body {
   margin: 20px;
 }
 
 /* Select Component */
-.select{
+.select {
   display: inline-grid;
   border: 1px solid gray;
   border-radius: 8px;
-  
-  svg, select{
+
+  svg,
+  select {
     grid-area: 1 / 1 / 2 / 2;
   }
 
-  svg{
+  svg {
     margin: 0 0.5em;
+    /* 마우스 이벤트(클릭, 호버 등)를 비활성화하는 CSS 속성 
+    select가 눌러진 것처럼 동작하게끔 */
     pointer-events: none;
   }
-  
-  select{
+
+  select {
     border: 0;
     background: transparent;
-    appearance: none;
+    appearance: none; /* 기본적으로 제공하는 꺽새 모양이 없어짐 */
     padding: 0.5em 1.75em;
   }
 
-  .icon-global{
+  .icon-global {
+    /* align-self(세로 정렬)와 justify-self(가로 정렬)를 한 번에 설정하는 속성
+    align-self: center; → 세로 방향 중앙 정렬
+    justify-self: start; → 가로 방향 왼쪽 정렬 */
     place-self: center start;
   }
 
-  .icon-triangle{
+  .icon-triangle {
     place-self: center end;
   }
 }
